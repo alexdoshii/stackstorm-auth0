@@ -1,4 +1,5 @@
 from auth0.authentication import GetToken
+from auth0.management import Auth0
 from auth0.exceptions import Auth0Error
 from st2common.runners.base_action import Action
 import logging
@@ -31,6 +32,11 @@ class Auth0Mgmt(Action):
             local=False,
             decrypt=True)
 
+    def _getAuth0(self) -> Auth0:
+        token = self._getAccessTokenFromStore()
+        auth0 = Auth0(self.domain, token)
+        return auth0
+
     def refreshAccessToken(self) -> bool:
         token = self._getAccessToken()
 
@@ -48,3 +54,12 @@ class Auth0Mgmt(Action):
         else:
             logger.error('Token not obtained. Cannot continue.')
             return False
+
+    def getUser(self, userId: str) -> dict:
+        auth0 = self._getAuth0()
+        try:
+            data = auth0.users.get(id="auth0|{}".format(userId))
+            return data
+        except Auth0Error as e:
+            logger.exception(str(e))
+            return {"error": str(e)}
