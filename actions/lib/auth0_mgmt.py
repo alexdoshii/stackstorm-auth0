@@ -1,6 +1,6 @@
-from auth0.authentication import GetToken
-from auth0.management import Auth0
-from auth0.exceptions import Auth0Error
+from auth0.v3.authentication import GetToken
+from auth0.v3.management import Auth0
+from auth0.v3.exceptions import Auth0Error
 from st2common.runners.base_action import Action
 
 __all__ = [
