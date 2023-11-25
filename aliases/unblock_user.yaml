@@ -3,9 +3,9 @@ pack: "auth0"
 action_ref: "auth0.unblock_user"
 description: "Unblock a user."
 formats:
-  - display: auth0 unblock user {{ user_id }}
+  - display: auth0 user unblock {{ user_id }}
     representation:
-      - auth0 unblock user {{ user_id }}
+      - auth0 user unblock {{ user_id }}
 ack:
   format: "Sending instructions. Please hold on."
   enabled: true

@@ -3,9 +3,9 @@ pack: "auth0"
 action_ref: "auth0.get_user"
 description: "Get a user."
 formats:
-  - display: auth0 get user {{ user_id }}
+  - display: auth0 user get {{ user_id }}
     representation:
-      - auth0 get user {{ user_id }}
+      - auth0 user get {{ user_id }}
 ack:
   format: "Getting user from auth0"
   enabled: true
