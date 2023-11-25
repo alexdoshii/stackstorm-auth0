@@ -11,4 +11,4 @@ ack:
   enabled: true
   append_url: false
 result:
-  format: "Here are the details: {{ execution.result }}"
+  format: "Here are the details: ```{{ execution.result.result }}```"

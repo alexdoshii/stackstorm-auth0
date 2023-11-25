@@ -12,8 +12,8 @@ ack:
   append_url: false
 result:
   format: >
-    {% if execution.result == true %}
-    Success! User unblock result is: {{ execution.result }}  
+    {% if execution.result.result == true %}
+    Success! User unblock result is: {{ execution.result.result }}  
     {% else %} 
     There was a problem in executing the command. Please check console.
     {% endif %}
