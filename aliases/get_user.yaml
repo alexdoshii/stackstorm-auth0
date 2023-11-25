@@ -1,0 +1,19 @@
+name: "get_user"
+pack: "auth0"
+action_ref: "auth0.get_user"
+description: "Get a user."
+formats:
+  - display: auth0 get user {{ user_id }}
+    representation:
+      - auth0 get user {{ user_id }}
+ack:
+  format: "Getting user from auth0"
+  enabled: true
+  append_url: false
+result:
+  format: >
+    {% if execution.exit_code == 0 %}
+    Here are the details: {{ execution.result }}  
+    {% else %} 
+    There was a problem in executing the command. {{ execution.stderr }}
+    {% endif %}

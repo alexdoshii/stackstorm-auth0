@@ -1,0 +1,19 @@
+name: "unblock_user"
+pack: "auth0"
+action_ref: "auth0.unblock_user"
+description: "Unblock a user."
+formats:
+  - display: auth0 unblock user {{ user_id }}
+    representation:
+      - auth0 unblock user {{ user_id }}
+ack:
+  format: "Sending instructions. Please hold on."
+  enabled: true
+  append_url: false
+result:
+  format: >
+    {% if execution.exit_code == 0 %}
+    Success! User unblock result is: {{ execution.result }}  
+    {% else %} 
+    There was a problem in executing the command. {{ execution.stderr }}
+    {% endif %}
