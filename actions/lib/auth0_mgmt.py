@@ -2,13 +2,10 @@ from auth0.authentication import GetToken
 from auth0.management import Auth0
 from auth0.exceptions import Auth0Error
 from st2common.runners.base_action import Action
-import logging
 
 __all__ = [
     'Auth0Mgmt'
 ]
-
-logger = logging.getLogger(__name__)
 
 class Auth0Mgmt(Action):
     def __init__(self, config):
@@ -49,11 +46,11 @@ class Auth0Mgmt(Action):
                     encrypt=True,
                     value=token)
             except:
-                logger.exception('An error occurred trying to set value.')
+                self.logger.exception('An error occurred trying to set value.')
                 return False
             return True
         else:
-            logger.error('Token not obtained. Cannot continue.')
+            self.logger.error('Token not obtained. Cannot continue.')
             return False
 
     def getUser(self, userId: str) -> dict:
@@ -68,5 +65,5 @@ class Auth0Mgmt(Action):
                 "last_login": data['last_login']
             }
         except Auth0Error as e:
-            logger.error(str(e))
+            self.logger.error(str(e))
             return {"error": str(e)}
