@@ -74,5 +74,5 @@ class Auth0Mgmt(Action):
             "created_at": user['created_at'],
             "updated_at": user['updated_at'],
             "last_login": user['last_login'],
-            "user_block": block if len(block['blocked_for']) > 0 else "unblocked"
+            "user_block": block if len(block['blocked_for']) > 0 else "not_blocked"
         }
