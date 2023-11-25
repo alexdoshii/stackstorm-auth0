@@ -77,10 +77,10 @@ class Auth0Mgmt(Action):
             "user_block": block if len(block['blocked_for']) > 0 else "not_blocked"
         }
 
-    def unblockUser(self, userId: str):
+    def unblockUser(self, userId: str) -> bool:
         auth0 = self._getAuth0()
         try:
             unblock = auth0.user_blocks.unblock(id="auth0|{}".format(userId))
         except Auth0Error as e:
             self.logger.exception(str(e))
-        return unblock
+        return True
