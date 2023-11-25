@@ -1,0 +1,15 @@
+---
+  name: "refresh_token_12hourly"
+  pack: "auth0"
+  description: "Refresh the Auth0 Mgmt access token every 12 hours."
+  enabled: true
+
+  trigger:
+  type: "core.st2.IntervalTimer"
+  parameters:
+    unit: hours
+    delta: 12
+    timezone: UTC
+
+  action:
+    ref: "auth0.refresh_token"
