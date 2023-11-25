@@ -5,11 +5,11 @@
   enabled: true
 
   trigger:
-  type: "core.st2.IntervalTimer"
-  parameters:
-    unit: hours
-    delta: 12
-    timezone: UTC
+    type: "core.st2.IntervalTimer"
+    parameters:
+      unit: hours
+      delta: 12
+      timezone: UTC
 
   action:
     ref: "auth0.refresh_token"
