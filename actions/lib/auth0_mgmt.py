@@ -7,6 +7,7 @@ __all__ = [
     'Auth0Mgmt'
 ]
 
+
 class Auth0Mgmt(Action):
     def __init__(self, config):
         super(Auth0Mgmt, self).__init__(config=config)
@@ -56,14 +57,22 @@ class Auth0Mgmt(Action):
     def getUser(self, userId: str) -> dict:
         auth0 = self._getAuth0()
         try:
-            data = auth0.users.get(id="auth0|{}".format(userId))
-            return {
-                "email": data['email'],
-                "email_verified": data['email_verified'],
-                "created_at": data['created_at'],
-                "updated_at": data['updated_at'],
-                "last_login": data['last_login']
-            }
+            user = auth0.users.get(id="auth0|{}".format(userId))
         except Auth0Error as e:
             self.logger.error(str(e))
             return {"error": str(e)}
+
+        try:
+            block = auth0.user_blocks.get(id="auth0|{}".format(userId))
+        except Auth0Error as e:
+            self.logger.exception(str(e))
+            return {"error": str(e)}
+
+        return {
+            "email": user['email'],
+            "email_verified": user['email_verified'],
+            "created_at": user['created_at'],
+            "updated_at": user['updated_at'],
+            "last_login": user['last_login'],
+            "user_block": block
+        }
