@@ -16,9 +16,11 @@ class Auth0Mgmt(Action):
         self._domain = self.config.get('auth0_domain')
 
     def _getAccessToken(self) -> str:
-        getToken = GetToken(self._domain, self._clientId, self._clientSecret)
+        getToken = GetToken(self._domain)
         try:
             token = getToken.client_credentials(
+                self._clientId,
+                self._clientSecret,
                 'https://{}/api/v2/'.format(self._domain))
         except Auth0Error as e:
             print(str(e))
