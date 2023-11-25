@@ -1,0 +1,16 @@
+---
+  auth0_domain:
+    description: "The Auth0 Domain"
+    type: "string"
+    secret: false
+    required: true
+  management_api_client_id:
+    description: "The Management API Client Id"
+    type: "string"
+    secret: true
+    required: true
+  management_api_client_secret:
+    description: "The Management API Client Secret"
+    type: "string"
+    secret: true
+    required: true

@@ -1,0 +1,12 @@
+---
+ref: auth0
+name : auth0
+description : Auth0 Management API
+keywords:
+  - auth0
+  - management
+version: 1.0.0
+python_versions:
+  - "3"
+author : Alex Levine
+email : alex@doshii.io
