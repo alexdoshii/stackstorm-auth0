@@ -6,5 +6,5 @@ __all__ = [
 
 
 class GetUser(Auth0Mgmt):
-    def run(self, user_id: str):
+    def run(self, user_id: str) -> dict:
         return self.getUser(user_id.strip())

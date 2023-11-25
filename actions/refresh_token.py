@@ -4,6 +4,6 @@ __all__ = [
     'RefreshTokenAction'
 ]
 
-class RefreshTokenAction(Auth0Mgmt):
+class RefreshTokenAction(Auth0Mgmt) -> bool:
     def run(self):
         return self.refreshAccessToken()
