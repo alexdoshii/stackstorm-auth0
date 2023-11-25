@@ -12,8 +12,8 @@ ack:
   append_url: false
 result:
   format: >
-    {% if execution.exit_code == 0 %}
+    {% if execution.result == true %}
     Success! User unblock result is: {{ execution.result }}  
     {% else %} 
-    There was a problem in executing the command. {{ execution.stderr }}
+    There was a problem in executing the command. Please check console.
     {% endif %}
