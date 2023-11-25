@@ -59,7 +59,13 @@ class Auth0Mgmt(Action):
         auth0 = self._getAuth0()
         try:
             data = auth0.users.get(id="auth0|{}".format(userId))
-            return data
+            return {
+                "email": data['email'],
+                "email_verified": data['email_verified'],
+                "created_at": data['created_at'],
+                "updated_at": data['updated_at'],
+                "last_login": data['last_login']
+            }
         except Auth0Error as e:
-            logger.exception(str(e))
+            logger.error(str(e))
             return {"error": str(e)}
