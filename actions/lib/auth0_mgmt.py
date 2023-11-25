@@ -79,4 +79,8 @@ class Auth0Mgmt(Action):
 
     def unblockUser(self, userId: str):
         auth0 = self._getAuth0()
-        return auth0.user_blocks.unblock(id="auth0|{}".format(userId))
+        try:
+            unblock = auth0.user_blocks.unblock(id="auth0|{}".format(userId))
+        except Auth0Error as e:
+            self.logger.exception(str(e))
+        return unblock
