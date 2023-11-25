@@ -7,8 +7,9 @@ __all__ = [
     'Auth0Mgmt'
 ]
 
+
 class Auth0Mgmt(Action):
-    def __init__(self,config):
+    def __init__(self, config):
         super(Auth0Mgmt, self).__init__(config=config)
         self._clientId = self.config.get('management_api_client_id')
         self._clientSecret = self.config.get('management_api_client_secret')
@@ -23,13 +24,13 @@ class Auth0Mgmt(Action):
             print(str(e))
             return None
         return token['access_token']
-    
+
     def _getAccessTokenFromStore(self) -> str:
         return self.action_service.get_value(
             name='auth0_mgmt_access_token',
             local=False,
             decrypt=True)
-    
+
     def refreshAccessToken(self) -> bool:
         token = self._getAccessToken()
 
@@ -39,7 +40,7 @@ class Auth0Mgmt(Action):
                     name='auth0_mgmt_access_token',
                     local=False,
                     encrypt=True,
-                    value = token)
+                    value=token)
             except:
                 logger.exception('An error occurred trying to set value.')
                 return False
@@ -47,5 +48,3 @@ class Auth0Mgmt(Action):
         else:
             logger.error('Token not obtained. Cannot continue.')
             return False
-
-
