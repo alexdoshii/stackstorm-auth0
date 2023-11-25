@@ -72,10 +72,10 @@ class Auth0Mgmt(Action):
 
         return {
             "email": user['email'],
-            "email_verified": user['email_verified'],
+            "email_verified": user['email_verified'] if 'email_verified' in user.keys() else None,
             "created_at": user['created_at'],
             "updated_at": user['updated_at'],
-            "last_login": user['last_login'],
+            "last_login": user['last_login'] if 'last_login' in user.keys() else None,
             "user_block": block if len(block['blocked_for']) > 0 else "not_blocked"
         }
 
