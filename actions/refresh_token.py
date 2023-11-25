@@ -1,4 +1,4 @@
-from lib.auth0-mgmt import Auth0Mgmt
+from lib.auth0_mgmt import Auth0Mgmt
 
 __all__ = [
     'RefreshTokenAction'
