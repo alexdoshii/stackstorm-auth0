@@ -34,7 +34,7 @@ class Auth0Mgmt(Action):
 
     def _getAuth0(self) -> Auth0:
         token = self._getAccessTokenFromStore()
-        auth0 = Auth0(self.domain, token)
+        auth0 = Auth0(self._domain, token)
         return auth0
 
     def refreshAccessToken(self) -> bool:
