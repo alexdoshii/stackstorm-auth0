@@ -8,6 +8,7 @@ __all__ = [
     'Auth0Mgmt'
 ]
 
+logger = logging.getLogger(__name__)
 
 class Auth0Mgmt(Action):
     def __init__(self, config):
