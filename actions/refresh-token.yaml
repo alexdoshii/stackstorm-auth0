@@ -3,6 +3,3 @@ runner_type: python-script
 description: Refreshes the access token
 enabled: true
 entry_point: refresh-token.py
-
-parameters:
-  
