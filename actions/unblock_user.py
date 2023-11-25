@@ -6,5 +6,5 @@ __all__ = [
 
 
 class UnblockUser(Auth0Mgmt):
-    def run(self, user_id: str) -> Any:
+    def run(self, user_id: str):
         return self.unblockUser(user_id.strip())
